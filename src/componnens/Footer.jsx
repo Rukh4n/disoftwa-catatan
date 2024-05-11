@@ -25,6 +25,9 @@ const Footer = () => {
                         <a href="#" className="flex items-center">
                             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">disoftwa</span>
                         </a>
+                        <a href="#" className="flex items-center">
+                            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Autor Nur Rukhan Saputra</span>
+                        </a>
                         {/* <form>
                             <textarea
                                 name="feedback"
