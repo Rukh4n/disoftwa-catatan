@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Footer from './componnens/Footer';
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -56,90 +57,92 @@ const App = () => {
   }
 
   return (
-    <div className='transition-all duration-1000' style={{ backgroundColor: backgroundColor }}>
+    <>
+      <div className='transition-all duration-1000' style={{ backgroundColor: backgroundColor }}>
 
-      <div className="flex flex-col items-center justify-center" >
-        <h1 className='text-white text-4xl my-4'>Belanja apa aja?</h1>
-        <form onSubmit={handleSubmit} className="mb-4 grid">
-          <input
-            type="text"
-            id='data'
-            placeholder='Masukan Nama Barang'
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            className="p-2 bg-slate-800 border border-gray-300 rounded mr-2 text-white my-2"
-          />
-          <input
-            type="text"
-            id='quantity'
-            placeholder='Masukan Jumlah'
-            value={quantityValue}
-            onChange={(e) => setQuantityValue(e.target.value)}
-            className="p-2 bg-slate-800 border border border-gray-300 rounded mr-2 text-white"
-          />
-          <div className="flex justify-center">
-            <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 my-4 px-6  rounded">Oke</button>
-          </div>
-        </form>
+        <div className="flex flex-col items-center justify-center" >
+          <h1 className='text-white text-4xl my-4'>Belanja apa aja?</h1>
+          <form onSubmit={handleSubmit} className="mb-4 grid">
+            <input
+              type="text"
+              id='data'
+              placeholder='Masukan Nama Barang'
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              className="p-2 bg-slate-800 border border-gray-300 rounded mr-2 text-white my-2"
+            />
+            <input
+              type="text"
+              id='quantity'
+              placeholder='Masukan Jumlah'
+              value={quantityValue}
+              onChange={(e) => setQuantityValue(e.target.value)}
+              className="p-2 bg-slate-800 border border border-gray-300 rounded mr-2 text-white"
+            />
+            <div className="flex justify-center">
+              <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 my-4 px-6  rounded">Oke</button>
+            </div>
+          </form>
 
-        <table className="mb-4 m-4 text-white">
-          <thead>
-            <tr>
-              <th>Barang</th>
-              <th>Jumlah</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td className="text-white">{item.name}</td>
-                <td className="text-white">{item.quantity}</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={item.checked}
-                    onChange={() => handleCheckboxChange(index)}
-                  />
-                </td>
+          <table className="mb-4 m-4 text-white">
+            <thead>
+              <tr>
+                <th>Barang</th>
+                <th>Jumlah</th>
+                <th>Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td className="text-white">{item.name}</td>
+                  <td className="text-white">{item.quantity}</td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={item.checked}
+                      onChange={() => handleCheckboxChange(index)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-        <table className="mb-4 m-4 text-white">
-          <thead>
-            <tr>
-              <th>Barang</th>
-              <th>Jumlah</th>
-            </tr>
-          </thead>
-          <tbody>
-            {completeData.map((item, index) => (
-              <tr key={index}>
-                <td className="text-white">{item.name}</td>
-                <td className="text-white">{item.quantity}</td>
+          <table className="mb-4 m-4 text-white">
+            <thead>
+              <tr>
+                <th>Barang</th>
+                <th>Jumlah</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {completeData.map((item, index) => (
+                <tr key={index}>
+                  <td className="text-white">{item.name}</td>
+                  <td className="text-white">{item.quantity}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-        {/* Modal */}
-        {showModal && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-            <div className="bg-white p-4 rounded animate__animated animate__fadeIn">
-              <p className="text-lg font-bold mb-4">Sudah selesai semua?</p>
-              <div className="flex justify-end">
-                <button onClick={handleModalConfirm} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Sudah</button>
+          {/* Modal */}
+          {showModal && (
+            <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+              <div className="bg-white p-4 rounded animate__animated animate__fadeIn">
+                <p className="text-lg font-bold mb-4">Sudah selesai semua?</p>
+                <div className="flex justify-end">
+                  <button onClick={handleModalConfirm} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Sudah</button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        <button onClick={handleFinish} className="w-60 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded bottom-0 m-4">Selesai</button>
+          <button onClick={handleFinish} className="w-60 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded bottom-0 m-4">Selesai</button>
+        </div>
       </div>
-    </div>
-
+      <Footer />
+    </>
   )
 }
 
